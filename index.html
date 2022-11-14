@@ -23,32 +23,31 @@
 
     <script>
         const get_value = () => {
-            const  tax= document.getElementById("tax").value;
-            const  verification_value= document.getElementById("verification_value").value;
+            let tax= document.getElementById("tax").value;
+            let verification_value= document.getElementById("verification_value").value;
             return [tax, verification_value];
-        }
+        };
 
-        function tax_in(){
-            const source_value = get_value();
-            const tax_amount = (source_value[0] / 100 * source_value[1]);
-            const total_amount = (parseInt(tax_amount) + parseInt(source_value[1]));
-
-            document.getElementById("tax_amount").textContent = tax_amount;
-            document.getElementById("total_amount").textContent = total_amount;
-            navigator.clipboard.writeText(total_amount);
-        }
-
-
-        function tax_out(){
-            const source_value = get_value();
-            const total_amount = ((source_value[0] / 100 + 1 ) /arguments source_value[1]);
-            const tax_amount = (parseInt(source_value[1]) - parseInt(total_amount));
+        const tax_in = () => {
+            let source_value = get_value();
+            let total_amount = (parseInt(source_value[0]) + parseInt(100)) * parseInt(source_value[1]) / parseInt(100);
+            let tax_amount = parseInt(total_amount) - parseInt(source_value[1]);
 
             document.getElementById("tax_amount").textContent = tax_amount;
             document.getElementById("total_amount").textContent = total_amount;
             navigator.clipboard.writeText(total_amount);
-        }
+        };
 
+
+        const tax_out = () => {
+            let source_value = get_value();
+            let total_amount = parseInt(source_value[1]) / (parseInt(source_value[0]) + parseInt(100)) * parseInt(100);
+            let tax_amount = (parseInt(source_value[1]) - parseInt(total_amount));
+
+            document.getElementById("tax_amount").textContent = tax_amount;
+            document.getElementById("total_amount").textContent = total_amount;
+            navigator.clipboard.writeText(total_amount);
+        };
 
 
 
