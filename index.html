@@ -8,18 +8,25 @@
 </head>
 <body>
 
-    <p>税額 <span id="tax_amount"></span></p>
-    <p>変換後の値 <span id="total_amount"></span></p>
+
+
 
     <label>税率　　<input type="text" value="10" id="tax" maxlength="30" /></label>%
     <br>
     <label>変換値　<input type="text" value="" id="verification_value" maxlength="30" /></label>
     <br>
+
     <input type="button" value="税別 → 税込" onclick="tax_in()" />
     <input type="button" value="税込 → 税別" onclick="tax_out()" />
-    
+    <br>
 
-
+    <p>税額 <span id="tax_amount"></span></p>
+    <p>変換後の値 <span id="total_amount"></span></p>
+    <label>コピーフォーマット</label>
+    <input type="button" value="1,000,000" onclick="amount_copy_1()" />
+    <input type="button" value="￥1,000,000" onclick="amount_copy_2()" />
+    <input type="button" value="1,000,000円(税込)" onclick="amount_copy_3()" />
+    <input type="button" value="1,000,000円(税別)" onclick="amount_copy_4()" />
 
     <script>
         const get_value = () => {
@@ -48,6 +55,11 @@
             document.getElementById("total_amount").textContent = total_amount;
             navigator.clipboard.writeText(total_amount);
         };
+
+
+        const amount_copy_1 = () => {
+            console.log(total_amount + 'tttttttttttttttt');
+        }
 
 
 
