@@ -22,9 +22,11 @@
 
     <p>税額 <span id="tax_amount"></span></p>
     <p>変換後の値 <span id="total_amount"></span></p>
-    <label>コピーフォーマット</label>
+    <p>テキストフォーマット <span id="text_format"></span></p></label>
+    <br>
+
     <input type="button" value="1,000,000" onclick="amount_copy_1()" />
-    <input type="button" value="￥1,000,000" onclick="amount_copy_2()" />
+    <input type="button" value="&yen;1,000,000.-" onclick="amount_copy_2()" />
     <input type="button" value="1,000,000円(税込)" onclick="amount_copy_3()" />
     <input type="button" value="1,000,000円(税別)" onclick="amount_copy_4()" />
 
@@ -58,11 +60,31 @@
 
 
         const amount_copy_1 = () => {
-            console.log(total_amount + 'tttttttttttttttt');
+            let text_format = Number(total_amount.innerText).toLocaleString();
+            navigator.clipboard.writeText(text_format);
+            document.getElementById("text_format").textContent = text_format;
+        }
+
+
+        const amount_copy_2 = () => {
+            let text_format = '\xA5' + Number(total_amount.innerText).toLocaleString() + '.-';
+            navigator.clipboard.writeText(text_format);
+            document.getElementById("text_format").textContent = text_format;
+        }
+
+        const amount_copy_3 = () => {
+            let text_format = Number(total_amount.innerText).toLocaleString() + '円(税込)';
+            navigator.clipboard.writeText(text_format);
+            document.getElementById("text_format").textContent = text_format;
         }
 
 
 
+        const amount_copy_4 = () => {
+            let text_format = Number(total_amount.innerText).toLocaleString() + '円(税別)';
+            navigator.clipboard.writeText(text_format);
+            document.getElementById("text_format").textContent = text_format;
+        }
 
 
     </script>
