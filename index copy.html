@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+    <label>税率　　<input type="text" value="10" id="tax" maxlength="30" /></label>%
+    <br>
+    <label>変換値　<input type="text" value="" id="verification_value" maxlength="30" /></label>
+    <br>
+
+    <input type="button" value="税別 → 税込" onclick="tax_in()" />
+    <input type="button" value="税込 → 税別" onclick="tax_out()" />
+    <br>
+
+    <p>税額 <span id="tax_amount"></span></p>
+    <p>変換後の値 <span id="total_amount"></span></p>
+    <p>テキストフォーマット <span id="text_format"></span></p></label>
+    <br>
+
+    <input type="button" value="1,000,000" onclick="amount_copy_1()" />
+    <input type="button" value="&yen;1,000,000.-" onclick="amount_copy_2()" />
+    <input type="button" value="1,000,000円(税込)" onclick="amount_copy_3()" />
+    <input type="button" value="1,000,000円(税別)" onclick="amount_copy_4()" />
+
+    <script>
+        const get_value = () => {
+            let tax= document.getElementById("tax").value;
+            let verification_value= document.getElementById("verification_value").value;
+            return [tax, verification_value];
+        };
+
+        const tax_in = () => {
+            let source_value = get_value();
+            let total_amount = (parseInt(source_value[0]) + parseInt(100)) * parseInt(source_value[1]) / parseInt(100);
+            let tax_amount = parseInt(total_amount) - parseInt(source_value[1]);
+
+            document.getElementById("tax_amount").textContent = tax_amount;
+            document.getElementById("total_amount").textContent = total_amount;
+            navigator.clipboard.writeText(total_amount);
+        };
+
+
+        const tax_out = () => {
+            let source_value = get_value();
+            let total_amount = parseInt(source_value[1]) / (parseInt(source_value[0]) + parseInt(100)) * parseInt(100);
+            let tax_amount = (parseInt(source_value[1]) - parseInt(total_amount));
+
+            document.getElementById("tax_amount").textContent = tax_amount;
+            document.getElementById("total_amount").textContent = total_amount;
+            navigator.clipboard.writeText(total_amount);
+        };
+
+
+        const amount_copy_1 = () => {
+            let text_format = Number(total_amount.innerText).toLocaleString();
+            navigator.clipboard.writeText(text_format);
+            document.getElementById("text_format").textContent = text_format;
+        }
+
+
+        const amount_copy_2 = () => {
+            let text_format = '\xA5' + Number(total_amount.innerText).toLocaleString() + '.-';
+            navigator.clipboard.writeText(text_format);
+            document.getElementById("text_format").textContent = text_format;
+        }
+
+        const amount_copy_3 = () => {
+            let text_format = Number(total_amount.innerText).toLocaleString() + '円(税込)';
+            navigator.clipboard.writeText(text_format);
+            document.getElementById("text_format").textContent = text_format;
+        }
+
+
+
+        const amount_copy_4 = () => {
+            let text_format = Number(total_amount.innerText).toLocaleString() + '円(税別)';
+            navigator.clipboard.writeText(text_format);
+            document.getElementById("text_format").textContent = text_format;
+        }
+
+
+    </script>
+</body>
+</html>
