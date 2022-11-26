@@ -21,21 +21,24 @@ const generateInputElement = (createKey, createValue) => {
 generateInputElement("tax", "税率");
 document.getElementById("tax").setAttribute("value", "10")
 
-
 generateInputElement("amount", "値");
 
 
 let generateRadioElement = (createKey, createValue) => {
   let blockRadio = document.createElement("div");
   blockRadio.setAttribute("class", "displapyInfoChild displapyInfoChildBlock");
+  
   let itemRadio = document.createElement("input");
-  itemRadio.setAttribute("type", "radio");
+  itemRadio.setAttribute("type", "checkbox");
+  itemRadio.setAttribute("id", "switch");
+  
+  blockRadio.appendChild(itemRadio);
+  displapyInfo.appendChild(blockRadio);
 
 }
 
 
-
-
+generateRadioElement();
 
 
 let blockButton = document.createElement("div");
@@ -53,22 +56,22 @@ let calculation = document.getElementById('generateButton')
 calculation.addEventListener("click", calculationClick); 
 
 function calculationClick() {
-    const getTax = Number(document.getElementById("tax").value);
-    const getAmount = Number(document.getElementById("amount").value);
+  const getTax = Number(document.getElementById("tax").value);
+  const getAmount = Number(document.getElementById("amount").value);
 
-    const resultTax = getAmount / getTax
-    const resultAmout = (getTax + 100) * getAmount / 100
-    
-    if (document.getElementById("resultTax") == null){
-      generateElement("resultTax", "税額");
-      generateElement("resultAmount", "変換後の値");
-    }
-
-    document.getElementById("resultTax").setAttribute("value", resultTax);
-    document.getElementById("resultAmount").setAttribute("value", resultAmout);
-
-
-    // alert(getTax * getAmount);
-
+  const resultTax = getAmount / getTax
+  const resultAmout = (getTax + 100) * getAmount / 100
+  
+  if (document.getElementById("resultTax") == null){
+    generateInputElement("resultTax", "税額");
+    generateInputElement("resultAmount", "変換後の値");
   }
+
+  document.getElementById("resultTax").setAttribute("value", resultTax);
+  document.getElementById("resultAmount").setAttribute("value", resultAmout);
+
+
+  // alert(getTax * getAmount);
+
+}
 
