@@ -48,12 +48,14 @@ let generateButtonInTax = document.createElement("a");
 generateButtonInTax.innerHTML = "税込に変換";
 generateButtonInTax.setAttribute("class", "original-button");
 generateButtonInTax.setAttribute("id", "generateButtonInTax");
+generateButtonInTax.setAttribute("value", "InTax");
 blockButton.appendChild(generateButtonInTax);
 
 let generateButtonOutTax = document.createElement("a");
 generateButtonOutTax.innerHTML = "税別に変換";
 generateButtonOutTax.setAttribute("class", "original-button");
 generateButtonOutTax.setAttribute("id", "generateButtonOutTax");
+generateButtonOutTax.setAttribute("value", "OutTax");
 blockButton.appendChild(generateButtonOutTax);
 
 
@@ -72,6 +74,8 @@ calculations.forEach(function(calculation) {
 function calculationClick() {
   const getTax = Number(document.getElementById("tax").value);
   const getAmount = Number(document.getElementById("amount").value);
+  const getTaxInfo = Number(calculation.value);
+  console.log(getTaxInfo);
 
   const resultTax = getAmount / getTax
   const resultAmout = (getTax + 100) * getAmount / 100
