@@ -49,11 +49,12 @@
     color: #ffffff;
     font-size: 18px;
     border-radius: 10px;
-    width: 100%;
+    width: 1000%;
     height: 30px;
     /* font-weight: bold; */
     transition: 0.3s;
     background-color: #1976d2;
+    margin: 10px;
   }
   
   .original-button:hover {

@@ -44,16 +44,30 @@ generateRadioElement();
 let blockButton = document.createElement("div");
 blockButton.setAttribute("class", "displapyInfoChild displapyInfoChildBlock displapyInfoChildBlockButton");
 
-let generateButton = document.createElement("a");
-generateButton.innerHTML = "計算";
-generateButton.setAttribute("class", "original-button");
-generateButton.setAttribute("id", "generateButton");
-blockButton.appendChild(generateButton);
+let generateButtonInTax = document.createElement("a");
+generateButtonInTax.innerHTML = "税込に変換";
+generateButtonInTax.setAttribute("class", "original-button");
+generateButtonInTax.setAttribute("id", "generateButtonInTax");
+blockButton.appendChild(generateButtonInTax);
+
+let generateButtonOutTax = document.createElement("a");
+generateButtonOutTax.innerHTML = "税別に変換";
+generateButtonOutTax.setAttribute("class", "original-button");
+generateButtonOutTax.setAttribute("id", "generateButtonOutTax");
+blockButton.appendChild(generateButtonOutTax);
+
+
+
 displapyInfo.appendChild(blockButton);
 
 
-let calculation = document.getElementById('generateButton')
-calculation.addEventListener("click", calculationClick); 
+// let calculation = document.getElementById('generateButton')
+let calculation = document.getElementsByClassName("original-button");
+let calculations = Array.from(calculation);
+
+calculations.forEach(function(calculation) {
+  calculation.addEventListener("click", calculationClick); 
+})
 
 function calculationClick() {
   const getTax = Number(document.getElementById("tax").value);
