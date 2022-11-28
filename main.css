@@ -8,7 +8,7 @@
 .display_info{
     /* display: flex; */
     /* flex-direction: column; */
-    width: 300px;
+    width: 380px;
     height: 400px;
     margin: 0 auto;
 }
@@ -20,7 +20,7 @@
 .displapyInfoChildLabel{
     display: inline-block;
     /* text-align: right; */
-    width: 100px;
+    width: 180px;
 }
 
 .displapyInfoChildBlockButton{
