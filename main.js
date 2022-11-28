@@ -38,8 +38,6 @@ let generateRadioElement = (createKey, createValue) => {
 }
 
 
-// generateRadioElement();
-
 
 let blockButton = document.createElement("div");
 blockButton.setAttribute("class", "displapyInfoChild displapyInfoChildBlock displapyInfoChildBlockButton");
@@ -58,29 +56,31 @@ generateButtonOutTax.setAttribute("id", "generateButtonOutTax");
 generateButtonOutTax.setAttribute("value", "OutTax");
 blockButton.appendChild(generateButtonOutTax);
 
-
-
 displapyInfo.appendChild(blockButton);
 
 
-// let calculation = document.getElementById('generateButton')
 let calculation = document.getElementsByClassName("original-button");
 let calculations = Array.from(calculation);
 
 calculations.forEach(function(element) {
-  element.addEventListener("click", calculationClick(Event)); 
+  element.addEventListener("click", calculationClick); 
 })
 
-function calculationClick() {
+function calculationClick(event) {
   const getTax = Number(document.getElementById("tax").value);
   const getAmount = Number(document.getElementById("amount").value);
-  // const getTaxInfo = Number(calculation.value);
-  console.console(Event.target);
   
+  let resultTax = ""
+  let resultAmout = ""
+  
+  if (event.target.id == 'generateButtonInTax') {
+    resultTax = getAmount / getTax;
+    resultAmout = (getTax + 100) * getAmount / 100;
+  } else if (event.target.id == 'generateButtonOutTax') {
+    resultTax = getAmount - (getAmount / (getTax + 100) * 100);
+    resultAmout = getAmount / (getTax + 100) * 100;
+  }
 
-  const resultTax = getAmount / getTax
-  const resultAmout = (getTax + 100) * getAmount / 100
-  
   if (document.getElementById("resultTax") == null){
     generateInputElement("resultTax", "税額");
     generateInputElement("resultAmount", "変換後の値");
@@ -88,9 +88,6 @@ function calculationClick() {
 
   document.getElementById("resultTax").setAttribute("value", resultTax);
   document.getElementById("resultAmount").setAttribute("value", resultAmout);
-
-
-  // alert(getTax * getAmount);
 
 }
 
