@@ -38,7 +38,7 @@ let generateRadioElement = (createKey, createValue) => {
 }
 
 
-generateRadioElement();
+// generateRadioElement();
 
 
 let blockButton = document.createElement("div");
@@ -67,15 +67,16 @@ displapyInfo.appendChild(blockButton);
 let calculation = document.getElementsByClassName("original-button");
 let calculations = Array.from(calculation);
 
-calculations.forEach(function(calculation) {
-  calculation.addEventListener("click", calculationClick); 
+calculations.forEach(function(element) {
+  element.addEventListener("click", calculationClick(Event)); 
 })
 
 function calculationClick() {
   const getTax = Number(document.getElementById("tax").value);
   const getAmount = Number(document.getElementById("amount").value);
-  const getTaxInfo = Number(calculation.value);
-  console.log(getTaxInfo);
+  // const getTaxInfo = Number(calculation.value);
+  console.console(Event.target);
+  
 
   const resultTax = getAmount / getTax
   const resultAmout = (getTax + 100) * getAmount / 100
