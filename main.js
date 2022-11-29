@@ -68,20 +68,6 @@ displapyInfo.appendChild(blockButton);
 
 
 
-let taxCopyElement = document.getElementsByClassName("copy-button taxAmountCopy");
-let taxCopyElements = Array.from(taxCopyElement);
-taxCopyElements.forEach(function(element) {
-  element.addEventListener("click", copyAmountValue); 
-});
-
-alert(taxCopyElement)
-
-function copyAmountValue(event) {
-  alert("dfsa")
-  selectId = event.target.id;
-  alert(selectId);
-}
-
 
 
 
@@ -129,7 +115,22 @@ function calculationClick(event) {
     document.getElementById(`copy${index}`).innerHTML = value;
   });
 
+  let = taxCopyElement = document.getElementsByClassName("copy-button taxAmountCopy");
+  let = taxCopyElements = Array.from(taxCopyElement);
+
+  taxCopyElements.forEach(function(element) {
+    element.addEventListener("click", copyAmountValue); 
+  });
+  
 }
 
 
 
+function copyAmountValue(event) {
+  selectId = event.target.id;
+  
+  copyId = selectId.substr(14);
+  copyIdElement = document.getElementById(copyId);
+  alert(`コピーしました: ${copyIdElement.innerHTML} `);
+  navigator.clipboard.writeText(copyIdElement.innerHTML);
+}
