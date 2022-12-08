@@ -131,6 +131,5 @@ function copyAmountValue(event) {
   
   copyId = selectId.substr(14);
   copyIdElement = document.getElementById(copyId);
-  alert(`コピーしました: ${copyIdElement.innerHTML} `);
   navigator.clipboard.writeText(copyIdElement.innerHTML);
 }
