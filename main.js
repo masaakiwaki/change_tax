@@ -80,8 +80,8 @@ calculations.forEach(function(element) {
 })
 
 function calculationClick(event) {
-  const getTax = Number(document.getElementById("tax").value);
-  const getAmount = Number(document.getElementById("amount").value);
+  const getTax = amountValidation(document.getElementById("tax").value);
+  const getAmount = amountValidation(document.getElementById("amount").value);
   
   let resultTax = ""
   let resultAmout = ""
@@ -132,4 +132,20 @@ function copyAmountValue(event) {
   copyId = selectId.substr(14);
   copyIdElement = document.getElementById(copyId);
   navigator.clipboard.writeText(copyIdElement.innerHTML);
+}
+
+const amountValidation = (str) => {
+  str = hankaku2Zenkaku(str)
+  str = findInteger(str)
+  return Number(str)
+};
+
+const hankaku2Zenkaku = (str) => {
+  return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function(s) {
+      return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+  });
+}
+
+const findInteger = (str) => {
+  return str.replace(/[^0-9]/g, "");
 }
