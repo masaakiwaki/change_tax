@@ -105,6 +105,8 @@ function calculationClick(event) {
                                   resultAmoutYenStyle,
                                   `\xA5${resultAmoutYenStyle}.-`,
                                   `${resultAmoutYenStyle}円(${taxBool})`,
+                                  `${Number(getAmount).toLocaleString()}円(${notTaxBool})`,
+                                  `\xA5${resultAmoutYenStyle}円(${taxBool})`,
                                   `\xA5${Number(getAmount).toLocaleString()}円(${notTaxBool})`,
                                   ]
 
