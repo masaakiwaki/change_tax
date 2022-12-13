@@ -86,19 +86,27 @@ function calculationClick(event) {
   let resultTax = ""
   let resultAmout = ""
   let taxBool = ""
+  let notTaxBool = ""
   
   if (event.target.id == 'generateButtonInTax') {
     resultTax = getAmount / getTax;
     resultAmout = (getTax + 100) * getAmount / 100;
     taxBool = "税込"
+    notTaxBool = "税別"
   } else if (event.target.id == 'generateButtonOutTax') {
     resultTax = getAmount - (getAmount / (getTax + 100) * 100);
     resultAmout = getAmount / (getTax + 100) * 100;
     taxBool = "税別"
+    notTaxBool = "税込"
   }
 
   let resultAmoutYenStyle = Number(resultAmout).toLocaleString()
-  let resultAmoutYenStyleArray = [resultAmout, resultAmoutYenStyle, `\xA5${resultAmoutYenStyle}.-`, `${resultAmoutYenStyle}円(${taxBool})`]
+  let resultAmoutYenStyleArray = [resultAmout, 
+                                  resultAmoutYenStyle,
+                                  `\xA5${resultAmoutYenStyle}.-`,
+                                  `${resultAmoutYenStyle}円(${taxBool})`,
+                                  `${Number(getAmount).toLocaleString()}円(${notTaxBool})`,
+                                  ]
 
   if (document.getElementById("resultTax") == null){
     generateInputElement("resultTax", "税額");
