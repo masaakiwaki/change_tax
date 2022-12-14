@@ -104,10 +104,10 @@ function calculationClick(event) {
   let resultAmoutYenStyleArray = [resultAmout, 
                                   resultAmoutYenStyle,
                                   `\xA5${resultAmoutYenStyle}.-`,
+                                  `\xA5${resultAmoutYenStyle}(${taxBool})`,
+                                  `\xA5${Number(getAmount).toLocaleString()}(${notTaxBool})`,
                                   `${resultAmoutYenStyle}円(${taxBool})`,
                                   `${Number(getAmount).toLocaleString()}円(${notTaxBool})`,
-                                  `\xA5${resultAmoutYenStyle}円(${taxBool})`,
-                                  `\xA5${Number(getAmount).toLocaleString()}円(${notTaxBool})`,
                                   ]
 
   if (document.getElementById("resultTax") == null){
