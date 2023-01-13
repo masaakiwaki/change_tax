@@ -22,23 +22,23 @@
             <p>{{ message }}</p>
             <div class="input-group mb-3">
                 <span class="input-group-text">税　率</span>
-                <input type="text" class="form-control" value="10" aria-label="Amount (to the nearest dollar)">
+                <input type="text" class="form-control"  v-model="taxRate" aria-label="Amount (to the nearest dollar)">
                 <span class="input-group-text">%</span>
             </div>
             <div class="input-group">
                 <span class="input-group-text">　値　</span>
-                <input type="text" class="form-control" placeholder="" aria-label="Recipient's username with two button addons">
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                    <label class="btn btn-outline-primary" for="btnradio1">税別</label>
-                  
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btnradio2">税込</label>
-                </div>
+                <input type="text" class="form-control" v-model="amount" placeholder="" aria-label="Recipient's username with two button addons">
+                <button type="button" class="btn btn-outline-primary" id="out-tax" v-on:click="taxCalc">税別</button>
+                <button type="button" class="btn btn-outline-primary" id="in-tax" v-on:click="taxCalc">税込</button>
+                <!-- <div class="d-grid gap-2 d-md-block ms-3">
+                    <button class="btn btn-primary" type="button" id="out-tax" v-on:click="taxCalc">税別</button>
+                    <button class="btn btn-primary" type="button" id="in-tax" v-on:click="taxCalc">税込</button>
+                    
+                  </div> -->
             </div>
             <div class="input-group mt-3">
                 <span class="input-group-text">消費税</span>
-                <input type="text" class="form-control" value="10" aria-label="Amount (to the nearest dollar)">
+                <input type="text" class="form-control" v-model="resultTax" aria-label="Amount (to the nearest dollar)">
             </div>
             
             <div class="list-container mt-3">
@@ -63,7 +63,7 @@
         </main>
         <aside></aside>
     </div>
-    <footer>footer</footer>
+    <footer></footer>
 
 
 
