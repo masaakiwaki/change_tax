@@ -44,11 +44,18 @@
             <div class="list-container mt-3">
                 <div class="list-group me-3" style="max-width: 50%;">
                     <a href="#" class="list-group-item list-group-item-action active text-center" aria-current="true">税別</a>
+                    <div v-for="outTaxItem in resultTaxOutAmoutStyleArray" :key="outTaxItem ">
+                        {{ outTaxItem }}
+                    </div>
                     <a href="#" class="list-group-item list-group-item-action">リンクアイテム2</a>
                     <a href="#" class="list-group-item list-group-item-action">リンクアイテム3</a>
+
                 </div>
                 <div class="list-group" style="max-width: 50%;">
                     <a href="#" class="list-group-item list-group-item-action active text-center" aria-current="true">税込</a>
+                    <div v-for="inTaxItem in resultTaxInAmoutStyleArray" :key="inTaxItem">
+                        {{ inTaxItem }}
+                    </div>
                     <a href="#" class="list-group-item list-group-item-action">リンクアイテム2</a>
                     <a href="#" class="list-group-item list-group-item-action">リンクアイテム3</a>
                 </div>

@@ -25,7 +25,7 @@ const amountValidation = (str) => {
 
 const outTaxCalc = (getTax, getAmount) => {
     resultTax = getAmount / getTax
-    resultAmout = (getTax + 100) * getAmount / 100
+    resultAmout = getAmount
     return [resultTax, resultAmout] 
 }
 
@@ -37,7 +37,25 @@ const inTaxCalc = (getTax, getAmount) => {
 }
 
 
+const createAmountString = (resultAmout, taxType) => {
+    let resultAmoutYenStyle = resultAmout.toLocaleString()
+    let resultAmoutYenStyleArray = [resultAmout, 
+                                    resultAmoutYenStyle,
+                                    `\xA5${resultAmoutYenStyle}.-`,
+                                    `\xA5${resultAmoutYenStyle}(${taxType})`,
+                                    `${resultAmoutYenStyle}円(${taxType})`,
+                                    ]
 
+    let resultAmountArray = []
+    for (i in resultAmoutYenStyleArray) {
+        resultAmountArray.push(resultAmoutYenStyleArray[i])
+        console.log(resultAmountArray[i])
+
+    }
+
+    return resultAmountArray 
+
+}
 
 
 const appdata = {
@@ -46,24 +64,33 @@ const appdata = {
             taxRate: 10,
             amount: "",
             resultTax: "",
-            resultAmout: "" 
-
-
+            resultAmout: "" ,
+            resultTaxOutAmoutStyleArray: "",
+            resultTaxInAmoutStyleArray: ""
         }
-    },
+        },
     methods:{
         taxCalc(event){
             this.amount = amountValidation(String(this.amount)) 
             if (event.target.id == 'out-tax') {
+                alert("税別")
                 result = outTaxCalc(this.taxRate, this.amount)
                 this.resultTax = (Math.floor(result[0] * 100)) / 100
                 this.resultAmout = (Math.floor(result[1] * 100)) / 100
             } else if (event.target.id == 'in-tax') {
+                alert("税込")
                 result = inTaxCalc(this.taxRate, this.amount)
                 this.resultTax = (Math.floor(result[0] * 100)) / 100
                 this.resultAmout = (Math.floor(result[1] * 100)) / 100
             } 
+
+            this.resultTaxOutAmoutStyleArray = createAmountString(this.resultAmout, '税別')
+            this.resultTaxInAmoutStyleArray = createAmountString(this.resultAmout + this.resultTax, '税込')
+
             }
+
+        
+
         }
     }
 
