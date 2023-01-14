@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="jp">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,11 +20,15 @@
     </script>
 
     <link rel="manifest" href="manifest.json">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>税計算ツール</title>
 </head>
+
 <body>
     <header>
         <div class="titleContainer">
@@ -37,12 +42,13 @@
             <p>{{ message }}</p>
             <div class="input-group mb-3">
                 <span class="input-group-text">税　率</span>
-                <input type="text" class="form-control"  v-model="taxRate" aria-label="Amount (to the nearest dollar)">
+                <input type="text" class="form-control" v-model="taxRate" aria-label="Amount (to the nearest dollar)">
                 <span class="input-group-text">%</span>
             </div>
             <div class="input-group">
                 <span class="input-group-text">　値　</span>
-                <input type="text" class="form-control" v-model="amount" placeholder="" aria-label="Recipient's username with two button addons">
+                <input type="text" class="form-control" v-model="amount" placeholder=""
+                    aria-label="Recipient's username with two button addons">
                 <button type="button" class="btn btn-outline-primary" id="out-tax" v-on:click="taxCalc">税別</button>
                 <button type="button" class="btn btn-outline-primary" id="in-tax" v-on:click="taxCalc">税込</button>
             </div>
@@ -51,18 +57,18 @@
                 <span class="input-group-text">消費税</span>
                 <input type="text" class="form-control" v-model="resultTax" aria-label="Amount (to the nearest dollar)">
             </div>
-            
+
             <div class="list-container mt-3" v-if="resultTaxOutAmoutStyleArray">
                 <div class="list-group me-3" style="max-width: 50%;">
                     <a class="list-group-item list-group-item-action active text-center" aria-current="true">税別</a>
                     <div v-for="outTaxItem in resultTaxOutAmoutStyleArray" :key="outTaxItem ">
-                        <a class="list-group-item list-group-item-action" @click="copyToClipboard(outTaxItem)">{{ outTaxItem }}</a>
+                        <a class="list-group-item list-group-item-action" @click="copyToClipboard(outTaxItem)">{{outTaxItem }}</a>
                     </div>
                 </div>
                 <div class="list-group" style="max-width: 50%;">
                     <a class="list-group-item list-group-item-action active text-center" aria-current="true">税込</a>
                     <div v-for="inTaxItem in resultTaxInAmoutStyleArray" :key="inTaxItem">
-                        <a class="list-group-item list-group-item-action" @click="copyToClipboard(inTaxItem)">{{ inTaxItem }}</a>                        
+                        <a class="list-group-item list-group-item-action" @click="copyToClipboard(inTaxItem)">{{inTaxItem }}</a>
                     </div>
                 </div>
             </div>
@@ -74,17 +80,24 @@
 
 
 
-    
+
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
-    
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
 
     <script src="https://unpkg.com/vue@next"></script>
     <script src="script.js"></script>
-       
+
 </body>
+
 </html>
