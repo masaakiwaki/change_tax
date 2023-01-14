@@ -73,21 +73,30 @@ const appdata = {
         taxCalc(event){
             this.amount = amountValidation(String(this.amount)) 
             if (event.target.id == 'out-tax') {
-                alert("税別")
                 result = outTaxCalc(this.taxRate, this.amount)
                 this.resultTax = (Math.floor(result[0] * 100)) / 100
                 this.resultAmout = (Math.floor(result[1] * 100)) / 100
+                this.resultTaxOutAmoutStyleArray = createAmountString(this.resultAmout, '税別')
+                this.resultTaxInAmoutStyleArray = createAmountString(this.resultAmout + this.resultTax, '税込')
             } else if (event.target.id == 'in-tax') {
-                alert("税込")
                 result = inTaxCalc(this.taxRate, this.amount)
                 this.resultTax = (Math.floor(result[0] * 100)) / 100
                 this.resultAmout = (Math.floor(result[1] * 100)) / 100
+                this.resultTaxOutAmoutStyleArray = createAmountString(this.resultAmout, '税別')
+                this.resultTaxInAmoutStyleArray = createAmountString(this.amount, '税込')
             } 
+            },
+        copyToClipboard(text) {
+            navigator.clipboard.writeText(text)
+            .then(() => {
+                console.log("copied!")
+                console.log(text)
+            })
+            .catch(e => {
+                console.error(e)
+            })
+        }
 
-            this.resultTaxOutAmoutStyleArray = createAmountString(this.resultAmout, '税別')
-            this.resultTaxInAmoutStyleArray = createAmountString(this.resultAmout + this.resultTax, '税込')
-
-            }
 
         
 
