@@ -29,12 +29,15 @@
         <div class="titleContainer">
             <h2 class="mt-3">税計算ツール</h2>
         </div>
+        
     </header>
 
     <div>
         <nav></nav>
         <main id="app">
-            <p>{{ message }}</p>
+            <p>2023年のトレンドカラー</p>
+            <p>ビバマゼンタにしてみた＼(^o^)／</p>
+            <p>機能変更は一つもないよ</p>
             <div class="input-group mb-3">
                 <span class="input-group-text">税　率</span>
                 <input type="text" class="form-control"  v-model="taxRate" aria-label="Amount (to the nearest dollar)">
@@ -54,13 +57,13 @@
             
             <div class="list-container mt-3" v-if="resultTaxOutAmoutStyleArray">
                 <div class="list-group me-3" style="max-width: 50%;">
-                    <a class="list-group-item list-group-item-action active text-center" aria-current="true">税別</a>
+                    <a class="list-group-item list-group-item-action active text-center" aria-current="true" style="background-color:#BE3455;border-color:#BE3455">税別</a>
                     <div v-for="outTaxItem in resultTaxOutAmoutStyleArray" :key="outTaxItem ">
                         <a class="list-group-item list-group-item-action" @click="copyToClipboard(outTaxItem)">{{ outTaxItem }}</a>
                     </div>
                 </div>
                 <div class="list-group" style="max-width: 50%;">
-                    <a class="list-group-item list-group-item-action active text-center" aria-current="true">税込</a>
+                    <a class="list-group-item list-group-item-action active text-center" aria-current="true" style="background-color:#BE3455;border-color:#BE3455">税込</a>
                     <div v-for="inTaxItem in resultTaxInAmoutStyleArray" :key="inTaxItem">
                         <a class="list-group-item list-group-item-action" @click="copyToClipboard(inTaxItem)">{{ inTaxItem }}</a>                        
                     </div>
